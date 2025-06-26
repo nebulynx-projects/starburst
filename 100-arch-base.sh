@@ -166,6 +166,35 @@ sudo pacman -S --noconfirm --needed starship
 sudo pacman -S --noconfirm --needed btop
 sudo pacman -S --noconfirm --needed htop
 
+echo
+tput setaf 3
+echo "########################################################################"
+echo "Detecting virtualization platform..."
+echo "########################################################################"
+tput sgr0
+echo
+
+virt_type=$(systemd-detect-virt)
+
+case "$virt_type" in
+    kvm)
+        echo "Detected KVM. Installing qemu-guest-agent..."
+        sudo pacman -S --noconfirm --needed qemu-guest-agent
+        sudo systemctl enable --now qemu-guest-agent.service
+        ;;
+    oracle)
+        echo "Detected VirtualBox. Installing virtualbox-guest-utils..."
+        sudo pacman -S --noconfirm --needed virtualbox-guest-utils
+        sudo systemctl enable --now vboxservice.service
+        ;;
+    none)
+        echo "No virtualization detected. Skipping guest utilities."
+        ;;
+    *)
+        echo "Virtualization detected: $virt_type, but no install routine defined."
+        ;;
+esac
+
 tput setaf 3
 echo "################################################################"
 echo "End base setup"
