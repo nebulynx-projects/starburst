@@ -20,6 +20,9 @@ echo "################################################################"
 tput sgr0
 echo
 
+# Setting installed_dir to base folder of the git-repository
+installed_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Installing chaotic-aur keys and mirrors
 pkg_dir="packages"
 
