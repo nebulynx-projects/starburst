@@ -82,11 +82,27 @@ echo
 
 func_install_xfce4_min
 
-#CLEANUP unwanted packages
+echo
+tput setaf 6
+echo "##############################################################"
+echo "###################  CLEANUP unwanted packages"
+echo "##############################################################"
+tput sgr0
+echo
+
 sudo pacman -Rs --noconfirm mousepad
 sudo pacman -Rs --noconfirm xfburn
 sudo pacman -Rs --noconfirm xfce4-screenshooter
 sudo pacman -Rs --noconfirm xfce4-notes-plugin
+
+echo
+tput setaf 6
+echo "##############################################################"
+echo "###################  Enabling SDDM"
+echo "##############################################################"
+tput sgr0
+echo
+sudo systemctl enable sddm.service
 
 echo
 tput setaf 6
