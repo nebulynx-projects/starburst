@@ -99,7 +99,7 @@ case "$choice" in
     4)
         touch /tmp/install-plasma-full
         ;;
-    X)
+    [Xx])
         echo "No desktop environment will be installed."
         ;;
     *)
@@ -132,7 +132,7 @@ case "$choice" in
     2)
         touch /tmp/install-hyprland
         ;;
-    X)
+    [Xx])
         echo "No desktop environment will be installed."
         ;;
     *)
