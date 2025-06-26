@@ -180,12 +180,12 @@ case "$virt_type" in
     kvm)
         echo "Detected KVM. Installing qemu-guest-agent..."
         sudo pacman -S --noconfirm --needed qemu-guest-agent
-        sudo systemctl enable --now qemu-guest-agent.service
+        sudo systemctl enable qemu-guest-agent.service
         ;;
     oracle)
         echo "Detected VirtualBox. Installing virtualbox-guest-utils..."
         sudo pacman -S --noconfirm --needed virtualbox-guest-utils
-        sudo systemctl enable --now vboxservice.service
+        sudo systemctl enable vboxservice.service
         ;;
     none)
         echo "No virtualization detected. Skipping guest utilities."
